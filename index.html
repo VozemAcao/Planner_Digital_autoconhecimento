@@ -129,7 +129,9 @@ svg{display:block}
 .res-list{position:absolute;left:1000px;right:100px}
 .res-list h3{margin:0 0 12px;font-family:var(--display);font-weight:700;font-size:40px;letter-spacing:.04em;color:var(--purple)}
 .res-item{display:flex;align-items:center;gap:20px;background:var(--card);border-radius:14px;padding:12px 22px;margin-bottom:12px;font-size:30px;font-weight:600}
-.res-item b{margin-left:auto;font-family:var(--display);font-size:38px;color:var(--purple)}
+.res-list h3.rh2{margin-top:12px}
+.res-list .res-item{font-size:23px;font-weight:400;line-height:1.22;text-align:left;padding:9px 18px;margin-bottom:9px}
+.res-item b{margin-left:0;font-family:var(--display);font-size:38px;color:var(--purple)}
 .range{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-top:10px}
 .range .sc span{padding:10px 0;font-size:30px;border-radius:14px}
 
@@ -153,12 +155,12 @@ svg{display:block}
 .dot{width:14px;height:14px;border-radius:50%;background:var(--teal)}
 .dot.off{background:#7d7777}
 .jump{position:relative}
-.jump summary{list-style:none;cursor:pointer;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:.05em;color:var(--purple);padding:4px 16px;border:2px solid var(--purple);border-radius:20px;user-select:none;white-space:nowrap}
+.jump summary{list-style:none;cursor:pointer;font-family:var(--display);font-weight:600;font-size:32px;letter-spacing:.05em;color:var(--purple);padding:8px 26px;border:3px solid var(--purple);border-radius:30px;user-select:none;white-space:nowrap}
 .jump summary::-webkit-details-marker{display:none}
 .jump summary::after{content:" ▾"}
 .jump[open] summary::after{content:" ▴"}
-.jmenu{position:absolute;right:0;top:calc(100% + 8px);background:var(--white);border:2px solid var(--purple);border-radius:14px;padding:8px;display:flex;flex-direction:column;gap:2px;z-index:8;box-shadow:0 10px 30px rgba(0,0,0,.25);min-width:300px}
-.jmi{background:none;border:0;text-align:left;padding:9px 14px;border-radius:8px;font-size:22px;font-weight:500;color:var(--ink);white-space:nowrap}
+.jmenu{position:absolute;right:0;top:calc(100% + 8px);background:var(--white);border:2px solid var(--purple);border-radius:14px;padding:8px;display:flex;flex-direction:column;gap:2px;z-index:8;box-shadow:0 10px 30px rgba(0,0,0,.25);min-width:380px}
+.jmi{background:none;border:0;text-align:left;padding:12px 18px;border-radius:8px;font-size:28px;font-weight:500;color:var(--ink);white-space:nowrap}
 .jmi:hover{background:var(--card)}
 .jmi.locked{opacity:.45;font-style:italic}
 .jmi.cur{background:var(--card);font-weight:700}
@@ -260,7 +262,7 @@ svg{display:block}
 .pt .pvb .dica h3{margin:0 0 8px;font:700 1.25em var(--display);color:var(--purple)}
 .pt .pvb .legend2>div{margin-bottom:12px}
 .pt .pvb .chip{font-size:.95em}
-.pt .pvb .rh{margin:0 0 10px;font:700 32px var(--display);letter-spacing:.04em;color:var(--purple)}
+.pt .pvb h3,.pt .pvb .rh{margin:0 0 10px;font:700 32px var(--display);letter-spacing:.04em;color:var(--purple)}
 .pt .pvb .res-item{font-size:1em;padding:12px 20px}
 .pcard{margin:18px 48px 0;flex:1;min-height:0;border-radius:22px;background:var(--card);overflow:hidden;display:flex;flex-direction:column}
 .pcard .ph{padding:22px 30px 16px;color:var(--white)}
@@ -273,9 +275,9 @@ svg{display:block}
 .pt .modal input{font-size:28px}
 .pt .modal .acts{flex-wrap:wrap;gap:14px 22px}
 .pt .toast{max-width:680px;font-size:26px;bottom:130px}
-.pt .pv .jump summary{font-size:19px;padding:3px 12px}
-.pt .pv .jmenu{min-width:240px;right:0}
-.pt .pv .jmi{font-size:19px;padding:8px 12px}
+.pt .pv .jump summary{font-size:25px;padding:6px 18px}
+.pt .pv .jmenu{min-width:290px;right:0}
+.pt .pv .jmi{font-size:23px;padding:10px 14px}
 .pt .pvtop{gap:8px}
 
 @media (orientation:portrait){}
@@ -1679,6 +1681,7 @@ const CAP_TEXT = [
 ];
 
 const T = (day, q) => ({tab:day, key:day, type:"text", q});
+const INFO = (day, q) => ({tab:day, key:day, type:"info", q});   // só orientação, sem campo de resposta
 const CTX = (day, n, ex) => ({tab:day, key:day, type:"ctx", q:"Contexto "+n+(ex?` <em>Ex: “${ex.o}”</em>`:""),
   l0:"O que aconteceu?", l1:"Sentimentos:", l2:"Reações:",
   ph0: ex?ex.o:"Descreva o que aconteceu…", ph1: ex?ex.s:"", ph2: ex?ex.r:""});
@@ -1689,7 +1692,7 @@ const WEEKS = [
    T("TER","Faça uma busca na internet de vídeos das pessoas que você citou e admira:"),
    T("QUA","Cite 2 ou 3 adjetivos que te agradam nas pessoas que você mencionou:"),
    T("QUI","Olhando agora para sua comunicação em comparação às pessoas que admira, o que considera que falta em você?"),
-   T("SEX","Reflita sobre as tarefas da semana e fale sobre o que o Autoconhecimento na Comunicação te trouxe de novo:")]},
+   INFO("SEX","Para encerrar a semana faça o <b>Teste BEHLAU</b> que se encontra no envelope plástico.")]},
  {n:2, title:"Qualidades e Desafios na Comunicação", sub:"Reconhecer pontos fortes e desafios na comunicação, permitindo melhorias contínuas e maior segurança ao se expressar.",
   items:[
    T("SEG","Qual mensagem acredita que passa ao se comunicar? <em>Ex: “Comunico amor e confiança.”</em>"),
@@ -1698,8 +1701,8 @@ const WEEKS = [
    T("QUI","O que acredita que pode e deve melhorar na sua comunicação? O que é mais difícil para você ao se comunicar? Anote:"),
    T("SEX","Quanto aos adjetivos, positivos e negativos, anotados nos exercícios anteriores, reflita sobre como você se sentiu e se fez sentido para você. Comente:")]},
  {n:3, title:"Comunicação Reativa", sub:"Desenvolver consciência sobre padrões na comunicação e trabalhar na construção de diálogos mais equilibrados e respeitosos.",
-  note:`Nessa semana, observe-se quando alguém discorda de você. Anote como você se sente e como reage. Utilize a lista de “Sentimentos” no ${linkMaterial("sentimentos","Link")}.`,
-  items:[ CTX("SEG",1,{o:"Um colega de trabalho me interrompe várias vezes na reunião e sempre discordando.", s:"Ex: Raiva.", r:"Ex: Fiquei impaciente."}), CTX("TER",2), CTX("QUA",3), CTX("QUI",4),
+  note:`Nessa semana, observe-se quando alguém discorda de você. Anote como você se sente e como você reage: <br>Utilize o encarte “Sentimentos” que encontrará no envelope plástico (ou acesse o ${linkMaterial("sentimentos","Link")}).`,
+  items:[ CTX("SEG",1), CTX("TER",2), CTX("QUA",3), CTX("QUI",4),
    T("SEX","O que você observou e concluiu sobre seus padrões ao ser contrariado?")]},
  {n:4, title:"Influência da Comunicação no Outro", sub:"Refletir sobre como a sua comunicação afeta o outro e como ajustá-la para gerar conexões mais construtivas.",
   items:[
@@ -1709,7 +1712,7 @@ const WEEKS = [
      ["Passivo","Concorda e desiste rapidamente."],["Agressivo","Expressa de forma impositiva."],
      ["Passivo-Agressivo","Não expressa objetividade."],["Assertivo","Expressa com clareza e objetividade."]]},
    T("QUI","Qual dos comportamentos citados ontem menos representa você? Reflita e registre o porquê:"),
-   T("SEX",`Preencha a Matriz da Comunicação (${linkMaterial("matriz","Link")}). Depois anote aqui sua percepção sobre o exercício:`)]}
+   T("SEX",`Preencha a Matriz da Comunicação que está no envelope plástico no final do planner (ou acesse o ${linkMaterial("matriz","Link")}). Depois anote aqui sua percepção sobre o exercício:`)]}
 ];
 const HABITS = [
  ["Exercício",'<path d="M3 9v6M6 7v10M18 7v10M21 9v6M6 12h12"/>'],
@@ -1723,29 +1726,31 @@ const DAYS = ["S","T","Q","Q","S","S","D"];
 /* Ciclo da Transformação (fim do capítulo) — 4 passos, fechando com a Nova Consciência */
 const CI = (tab,key,q,ph) => ({tab,key,type:"text",q,ph});
 const CICLO = [
- {n:1, pill:"01. CONSCIÊNCIA", title:"Da experiência ao desenvolvimento",
-  sub:["Ao longo do tema AUTOCONHECIMENTO, algumas tarefas podem ter sido naturais e outras, mais desafiadoras. Agora é hora de olhar para essas mais desafiadoras e aproveitar a experiência para provocar uma transformação.","Não se trata de fazer tudo melhor, e sim de escolher, conscientemente, o que vale a pena desenvolver ou aprimorar.","Revisite as práticas/tarefas do tema que finalizou para construir um PLANO DE AÇÃO com o Método do Ciclo da Transformação na Comunicação."].join(" "),
-  note:"<b>O que eu percebi?</b><br>“Só curo o que enxergo.”",
-  items:[ CI("DESAFIO","c1_desafio","Qual exercício ou reflexão foi mais desafiador para você? <em>Ex: “Recebi um feedback de que sou prolixo(a).”</em>"),
-          CI("CAUSA","c1_causa","O que tornou essa prática desafiadora? <em>Ex: “O fato de eu não imaginar que sou prolixo(a).”</em>"),
-          CI("ENXERGO","c1_insight","O que essa experiência fez você perceber sobre a sua forma de se comunicar? Que comportamento, hábito ou padrão você identificou? <em>Ex: “Quero evitar ser prolixo.”</em>","Percebi que…") ]},
- {n:2, pill:"02. MOTIVAÇÃO", title:"Por que quero melhorar?",
-  sub:"Consciência nos mostra o que pode ser transformado. Motivação nos conecta ao porquê da transformação. A partir do que você percebeu, construa o segundo passo do Ciclo da Transformação na Comunicação.",
-  note:"<b>Por que quero melhorar?</b><br>Reconheço, pois faz sentido.",
-  items:[ CI("PORQUÊ","c2_porque","Por que seria importante desenvolver o que percebeu? <em>Ex: “Porque a forma como me comunico é fundamental para transmitir minhas ideias.”</em>"),
-          CI("IMPACTO","c2_impacto","Que diferença essa mudança pode fazer para você, para o outro ou para suas relações? <em>Ex: “Vou ser mais objetivo(a) e claro(a) na minha comunicação.”</em>"),
-          CI("RECONHEÇO","c2_meu","Resuma sua Motivação. <em>Ex: “Quero ser exemplo de objetividade e clareza.”</em>") ]},
- {n:3, pill:"03. AÇÃO", title:"O que vou fazer?",
-  sub:["Transformação acontece quando aquilo que percebemos e nos motiva a desenvolver ganha espaço na nossa forma de agir.","A partir do que você percebeu e do porquê é importante se desenvolver mais nesse tema que acabou de concluir, construa o terceiro passo do Ciclo da Transformação na Comunicação, ou seja, com base na CONSCIÊNCIA e na MOTIVAÇÃO que descreveu, escolha atitudes concretas para experimentar no seu dia a dia."].join(" "),
-  note:"<b>O que vou fazer?</b><br>Transformo o que pratico.",
-  items:[ CI("O QUE","c3_oque","Que comportamento quer incorporar ou fazer diferente? <em>Ex: “Vou pedir feedback sobre minha comunicação…”</em>"),
-          CI("COMO","c3_como","Como vou praticar? Em quais situações ou relações posso experimentar essa atitude? <em>Ex: “Sempre que estiver expondo minhas ideias em reuniões, perguntando se me comuniquei de forma clara e objetiva.”</em>"),
-          CI("PRATICO","c3_acoes","Que ações concretas vou realizar? <em>Ex: “Pedir feedback sobre minha comunicação.”; “Me auto-observar mais.”</em>") ]},
- {n:4, pill:"04. NOVA CONSCIÊNCIA", title:"Observando o IMPACTO",
-  sub:"Ao praticar uma nova atitude, observe não apenas o que você fez, mas também o impacto que produziu — e o Ciclo recomeça.",
-  note:"<b>O que a prática me ensinou?</b><br>Evoluo quando aprendo.",
-  items:[ CI("IMPACTO","c4_mim","Observe o que produziu essa mudança e se questione: o que comecei a perceber de diferente em mim? O que ficou de diferente nas minhas relações? <em>Ex: “Comecei a me sentir mais tranquilo ao falar e percebi o outro prestando mais atenção no que falo.”</em>"),
-          CI("APRENDO","c5_aprendi","O que agora consigo enxergar que antes não enxergava? <em>Ex: “Autoconhecimento é essencial para minha comunicação.”</em>","Hoje reconheço que…") ]}
+{n:1, pill:"01. CONSCIÊNCIA", title:"Da experiência ao desenvolvimento",
+ sub:"Ao longo do tema AUTOCONHECIMENTO, você experimentou diferentes atitudes, reflexões e formas de se comunicar. Algumas podem ter sido naturais. Outras, mais desafiadoras. Agora é hora de olhar para essa experiência e reconhecer o que ela revelou sobre você. Não se trata de fazer tudo melhor. Trata-se de escolher, conscientemente, o que vale a pena desenvolver ou aprimorar. Revisite as práticas/tarefas do tema que finalizou para construir um PLANO DE AÇÃO com o Método do Ciclo da Transformação na Comunicação.",
+ note:"<b>O que eu percebi?</b>",
+ items:[ CI("DESAFIO","c1_desafio","Qual exercício, atitude ou reflexão foi mais desafiador para você? <em>Ex: “Recebi um feedback de que sou prolixo(a).”</em> "),
+         CI("CAUSA","c1_causa","O que tornou essa prática desafiadora? <em>Ex: “O fato de eu não imaginar que sou prolixo(a).”</em> "),
+         CI("MEU INSIGHT","c1_insight","O que essa experiência fez você perceber sobre a sua forma de se comunicar? Que comportamento, hábito ou padrão você identificou? <em>Ex: “Percebi que preciso me observar mais na forma de eu me comunicar.”</em> ","Percebi que…") ]},
+{n:2, pill:"02. MOTIVAÇÃO", title:"Da experiência ao desenvolvimento",
+ sub:"Consciência nos mostra o que pode ser transformado. Motivação nos conecta ao porquê da transformação. A partir do que você percebeu, construa o segundo passo do Ciclo da Transformação na Comunicação.",
+ note:"<b>Por que quero desenvolver?</b>",
+ items:[ CI("PORQUÊ","c2_porque","Por que seria importante desenvolver o que percebeu? <em>Ex: “Porque a forma como me comunico é fundamental para transmitir minhas ideias.”</em> "),
+         CI("IMPACTO","c2_impacto","Que diferença essa mudança pode fazer para você, para o outro ou para suas relações? <em>Ex: “Vou ser mais objetivo(a) e claro(a) na minha comunicação.”</em> "),
+         CI("MEU PORQUÊ","c2_meu","Resuma sua Motivação. <em>Ex: “Quero desenvolver a prática de pedir feedbacks porque isso fará com que eu evite ser prolixo(a), por exemplo, e transmita minhas ideias de forma objetiva e clara.”</em> ","Quero desenvolver/aprimorar porque…") ]},
+{n:3, pill:"03. AÇÃO", title:"Da experiência ao desenvolvimento",
+ sub:"Transformação acontece quando aquilo que percebemos e nos motiva a desenvolver ganha espaço na nossa forma de agir. A partir do que você percebeu e do porquê é importante se desenvolver mais nesse tema que acabou de concluir, construa o terceiro passo do Ciclo da Transformação na Comunicação, ou seja, com base na CONSCIÊNCIA e na MOTIVAÇÃO que descreveu, escolha atitudes concretas para experimentar no seu dia a dia.",
+ note:"<b>Como vou colocar essa transformação em prática?</b>",
+ items:[ CI("O QUE VOU PRATICAR","c3_oque","<b>O que vou praticar?</b> Que comportamento ou atitude quer incorporar, fortalecer ou fazer diferente? <em>Ex: “Vou pedir feedback sobre minha comunicação...”</em> "),
+         CI("COMO VOU PRATICAR","c3_como","<b>Como vou praticar?</b> Em quais situações ou relações posso experimentar essa atitude? <em>Ex: “Sempre que estiver expondo minhas ideias e opiniões em reuniões ou mesmo em conversas reservadas, perguntando se me comuniquei de forma clara e objetiva.”</em> "),
+         CI("MINHAS AÇÕES","c3_acoes","Que ações concretas vou realizar? <em>Ex: “Pedir feedback sobre minha comunicação.”; “Perguntar se estou sendo objetivo(a) e claro(a).”; “Me auto-observar mais.”</em> ") ]},
+{n:4, pill:"04. NOVA CONSCIÊNCIA", title:"Observando o IMPACTO",
+ sub:"Ao praticar uma nova atitude, observe não apenas o que você fez, mas também o impacto que produziu.",
+ note:"<b>Como vou perceber minha evolução?</b><br><small>obs: Utilize este formulário para escrever em sua luminária de insights.</small>",
+ items:[ CI("EM MIM","c4_mim","O que comecei a perceber de diferente em mim? <em>Ex: “Comecei a me sentir mais tranquilo ao falar.”</em> "),
+         CI("RELAÇÕES","c4_relacoes","O que passei a observar de diferente nas minhas relações? <em>Ex: “Percebi o outro prestando mais atenção no que falo.”</em> "),
+         CI("SINAIS","c4_sinais","Que sinais surgiram com minha evolução? <em>Ex: “Tenho recebido feedbacks positivos.”</em> "),
+         CI("APRENDO","c5_aprendi","<b>E o Ciclo recomeça… O que a prática me ensinou?</b> O que agora consigo enxergar que antes não enxergava? <em>Ex: “Autoconhecimento é essencial para o meu desenvolvimento da comunicação.”</em> ","Hoje reconheço que…") ]}
 ];
 
 /* ====== PÁGINAS ====== */
@@ -1814,6 +1819,7 @@ const A = k => state.answers[k];
 const testAnswered = b => Array.from({length:QPB},(_,j)=>j).every(j=>A("t_"+(b*QPB+j+1)));
 const testComplete = () => QS.every((_,i)=>A("t_"+(i+1)));
 function itemFilled(w,it){
+  if(it.type==="info") return true;
   const k=`s${w.n}_${it.key}`;
   if(it.type==="ctx") return !!(String(A(k+"_sent")||"").trim() && String(A(k+"_reac")||"").trim() && (!it.l0 || String(A(k+"_desc")||"").trim()));
   return !!String(A(k)||"").trim();
@@ -1920,19 +1926,38 @@ function queueSave(){
   state.ts = Date.now(); store.set(LS_ST,state);
   if(MODO) return;   // no modo "só o teste" nada é gravado na planilha do planner: só o envio final da devolutiva
   if(!CONFIG.APPS_SCRIPT_URL || !identity || identity.demo){ setSync(identity&&identity.demo ? "Modo demonstração — não grava na planilha":"Salvo neste aparelho"); return; }
-  clearTimeout(sv);
-  sv=setTimeout(async()=>{
-    let bad=null;
-    for(const cap of [CAP_INTRO,CAP]){ const r=await callWithRepair({action:"saveAnswers",email:identity.email,capitulo:cap,data:JSON.stringify(partOf(cap))},true); if(!(r&&r.ok)) bad=r||{error:"sem resposta"}; }
-    setSync(bad?erroMsg(bad)+" — salvo neste aparelho":"Sincronizado com a planilha",!!bad);
-  },800);
+  clearTimeout(sv); svPending=true;
+  sv=setTimeout(flushSave,800);
 }
+let svPending=false;
+/* grava já as respostas pendentes (usado ao concluir uma semana e ao sair da página) */
+async function flushSave(){
+  clearTimeout(sv); if(!svPending) return; svPending=false;
+  if(MODO || !CONFIG.APPS_SCRIPT_URL || !identity || identity.demo) return;
+  let bad=null;
+  for(const cap of [CAP_INTRO,CAP]){ const r=await callWithRepair({action:"saveAnswers",email:identity.email,capitulo:cap,data:JSON.stringify(partOf(cap))},true); if(!(r&&r.ok)) bad=r||{error:"sem resposta"}; }
+  setSync(bad?erroMsg(bad)+" — salvo neste aparelho":"Sincronizado com a planilha",!!bad);
+}
+/* ao fechar/trocar de aba, o navegador pode cancelar o envio: manda o que falta com keepalive */
+function flushOnLeave(){
+  if(!svPending || MODO || !CONFIG.APPS_SCRIPT_URL || !identity || identity.demo) return;
+  svPending=false; clearTimeout(sv);
+  for(const cap of [CAP_INTRO,CAP]){
+    const params={action:"saveAnswers",email:identity.email,capitulo:cap,data:JSON.stringify(partOf(cap))};
+    try{ fetch(CONFIG.APPS_SCRIPT_URL,{method:"POST",keepalive:true,body:new URLSearchParams(identity.token?Object.assign({token:identity.token},params):params)}); }catch(e){}
+  }
+}
+addEventListener("pagehide",flushOnLeave);
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden") flushOnLeave(); });
 async function syncDone(n){
   store.set(LS_ST,state);
+  await flushSave();   // as respostas da semana vão para a planilha antes de marcá-la como concluída
   const r = await callWithRepair({action:"set",email:identity&&identity.email,capitulo:CAP,semana:n,valor:!!state.done[n]});
   if(r) setSync(r.ok?"Sincronizado com a planilha":erroMsg(r)+" — salvo neste aparelho",!r.ok);
 }
-function setSync(msg,off){ syncMsg=msg; const el=document.querySelector(".who .m"); if(el) el.textContent=msg; const d=document.querySelector(".who .dot"); if(d) d.classList.toggle("off",!!off); }
+const syncTxt=(msg,off)=>off?" · "+msg:"";
+function setSync(msg,off){ syncMsg=msg; const el=document.querySelector(".who .m"); if(el) el.textContent=syncTxt(msg,syncOff=!!off); const d=document.querySelector(".who .dot"); if(d){ d.classList.toggle("off",!!off); d.title=msg; } }
+let syncOff=false;
 
 /* ====== RODA (autoavaliação) ====== */
 function levels(){
@@ -1948,10 +1973,15 @@ function wheel(strong, ghost, size){
     const a0=-120+30*k, a1=a0+30;
     if(ghost[k]) s+=`<path d="${wedge(R*ghost[k]/10,a0,a1)}" fill="#b6acd6"/>`;
     if(strong[k]) s+=`<path d="${wedge(R*strong[k]/10,a0,a1)}" fill="#5c3e94"/>`;
-    const mid=a0+15, rr=R+band/2+7, bottom=mid>0&&mid<180;
-    const [xa,ya]=pt(rr,bottom?a1:a0),[xb,yb]=pt(rr,bottom?a0:a1);
-    s+=`<path id="${uid}${k}" d="M${xa} ${ya}A${rr} ${rr} 0 0 ${bottom?0:1} ${xb} ${yb}" fill="none"/>
-        <text font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="${c.length>12?15:17}" letter-spacing=".8" fill="#fff"><textPath href="#${uid}${k}" startOffset="50%" text-anchor="middle">${c.toUpperCase()}</textPath></text>`;
+    const mid=a0+15, rr=R+band/2+7, bottom=mid>0&&mid<180, nm=WHEEL_NAMES_CLI[k];
+    const lines=WHEEL_2L[nm]||[nm.toUpperCase()], fs=lines.length>1?13:(nm.length>12?15:17), ls=fs*1.1;
+    /* duas linhas: na metade de cima a 1ª fica por fora; na de baixo, por dentro (como no PDF) */
+    lines.forEach((ln,i)=>{
+      const r2=lines.length>1?rr+(bottom?-1:1)*(0.5-i)*ls:rr;
+      const [xa,ya]=pt(r2,bottom?a1:a0),[xb,yb]=pt(r2,bottom?a0:a1);
+      s+=`<path id="${uid}${k}_${i}" d="M${xa} ${ya}A${r2} ${r2} 0 0 ${bottom?0:1} ${xb} ${yb}" fill="none"/>
+        <text font-family="Barlow Condensed,sans-serif" font-weight="600" font-size="${fs}" letter-spacing=".8" fill="#fff"><textPath href="#${uid}${k}_${i}" startOffset="50%" text-anchor="middle">${ln}</textPath></text>`;
+    });
   });
   for(let i=1;i<=10;i++) s+=`<circle r="${R*i/10}" fill="none" stroke="#8b7fb8" stroke-width="${i===10?2.5:1}"/>`;
   for(let k=0;k<12;k++){ const [x,y]=pt(R+band,-120+30*k); s+=`<line x1="0" y1="0" x2="${x}" y2="${y}" stroke="#8b7fb8" stroke-width="1.5"/>`; }
@@ -1983,7 +2013,7 @@ function jumpMenu(){
 function who(){
   if(MODO) return `<div class="who"><span class="dot"></span><span><b>${identity&&identity.nome?"Olá, "+esc(identity.nome.split(" ")[0]):"Teste da Comunicação"}</b></span></div>`;
   const nome = identity && !identity.demo ? "Olá, "+esc(identity.nome.split(" ")[0]) : "Visitante";
-  return `<div class="who"><span class="dot ${syncMsg.includes("Sem")?"off":""}"></span><span><b>${nome}</b> · <span class="m">${esc(syncMsg||"Salvo neste aparelho")}</span></span><button data-act="id">${identity?"Trocar":"Identificar-se"}</button>${jumpMenu()}</div>`;
+  return `<div class="who"><span class="dot ${syncOff?"off":""}" title="${esc(syncMsg||"Salvo neste aparelho")}"></span><span><b>${nome}</b><span class="m">${esc(syncTxt(syncMsg,syncOff))}</span></span><button data-act="id">${identity?"Trocar":"Identificar-se"}</button>${jumpMenu()}</div>`;
 }
 
 function nav(wide){
@@ -2007,7 +2037,8 @@ function nav(wide){
 function itemHTML(scope,it,miss){
   const key = `${scope}_${it.key}`;
   let inner;
-  if(it.type==="text") inner = `<div class="ask">${it.q}</div><textarea class="pad" data-key="${key}" aria-label="Sua resposta — ${esc(it.tab)}" placeholder="${it.ph||"Escreva aqui…"}">${val(key)}</textarea>`;
+  if(it.type==="info") inner = `<div class="ask">${it.q}</div>`;
+  else if(it.type==="text") inner = `<div class="ask">${it.q}</div><textarea class="pad" data-key="${key}" aria-label="Sua resposta — ${esc(it.tab)}" placeholder="${it.ph||"Escreva aqui…"}">${val(key)}</textarea>`;
   else if(it.type==="ctx") inner = `<div class="ask">${it.q}</div>
       ${it.l0?`<textarea class="pad" style="flex:none;height:96px" data-key="${key}_desc" aria-label="${esc(it.q)} — ${esc(it.l0)}" placeholder="${esc(it.ph0||it.l0)}">${val(key+"_desc")}</textarea>`:""}
       <div class="two">
@@ -2015,7 +2046,7 @@ function itemHTML(scope,it,miss){
       <label>${it.l2}<textarea class="pad" data-key="${key}_reac" aria-label="${esc(it.l2)}" placeholder="${esc(it.ph2||"")}">${val(key+"_reac")}</textarea></label></div>`;
   else inner = `<div class="ask">${it.q}</div><div class="opts" role="radiogroup">${it.opts.map(o=>
       `<label class="opt"><input type="radio" name="${key}" data-key="${key}" value="${o[0]}" ${A(key)===o[0]?"checked":""}><span><b>${o[0]}</b> — ${o[1]}</span></label>`).join("")}</div>`;
-  return `<div class="row ${it.type==="radio"?"fit":""} ${miss?"missing":""}"><div class="tab">${it.tab}</div><div class="body">${inner}</div></div>`;
+  return `<div class="row ${it.type==="radio"?"fit":""} ${miss?"missing":""}" ${it.type==="info"?'style="flex:none;min-height:130px"':""}><div class="tab">${it.tab}</div><div class="body">${inner}</div></div>`;
 }
 
 function panel(kick,pill,title,sub,note,extra,cls){
@@ -2067,7 +2098,7 @@ function introHTML(i){
     <h3 style="margin:0 0 4px;color:var(--purple)">Nova Consciência <span style="font-weight:500;font-style:italic">— Evoluo quando aprendo.</span></h3>
     ${run("O Ciclo se fecha de forma contínua, pois a jornada do desenvolvimento é um aprendizado diário, ou seja:")}
     <ul><li>A cada nova etapa de mudança, voltamos à Consciência inicial e percebemos o impacto de aspectos trabalhados.</li><li>Os resultados reforçam nossa Motivação, nos mantendo engajados no processo de evolução comunicacional contínuo.</li><li>Essa nova percepção nos leva novamente à Ação, experimentando ajustes.</li></ul>
-    ${run("Assim, esse ciclo ganha esse novo pilar, a Nova Consciência, que permite que a comunicação se torne um instrumento cíclico e poderoso de conexão e crescimento pessoal.")}</div>
+    ${run("Assim, o Ciclo da Transformação ganha esse novo pilar, a Nova Consciência, que permite que a comunicação se torne um instrumento cíclico e poderoso de conexão e crescimento pessoal.")}</div>
     <div class="abs" style="left:930px;top:250px;width:760px">${img("ciclo4","width:100%")}</div>
     <div class="abs" style="left:100px;right:100px;bottom:150px;text-align:center;font-style:italic;font-weight:600;font-size:44px;color:var(--purple);line-height:1.1">Aproveite esta oportunidade única!</div>${nav(true)}</section>`;
   if(i===5){
@@ -2078,7 +2109,8 @@ function introHTML(i){
     ${it(2,"Atividades Diárias,","4 semanas por tema, criadas para elevar sua consciência por meio de práticas e reflexões sobre o tema. Ações simples, porém poderosas nessa jornada.")}
     ${it(3,"Autoavaliação","ao final de cada tema, você será convidado(a) a refletir sobre sua experiência e suas conquistas.")}
     ${it(4,"Material de Apoio","Algumas tarefas indicarão a utilização desses materiais de apoio complementares, que poderão ser acessados através de link (pdf) para impressão/visualização.")}
-    ${it(5,"Curadoria de Conteúdo","disponibilizada com frequência e de forma dinâmica no site www.vozemacao.com: sugestões de livros, filmes, documentários e videoaulas que ampliarão seu olhar e aprofundarão sua jornada.")}</div>${nav()}</section>`;
+    ${it(5,"Ciclo da Transformação","ao final de cada tema, você encerrará o capítulo revisitando as práticas/tarefas do tema que finalizou para construir um PLANO DE AÇÃO com o Método do Ciclo da Transformação na Comunicação.")}
+      ${it(6,"Curadoria de Conteúdo","disponibilizada com frequência e de forma dinâmica no site www.vozemacao.com: sugestões de livros, filmes, documentários e videoaulas que ampliarão seu olhar e aprofundarão sua jornada.")}</div>${nav()}</section>`;
   }
   return `<section class="screen">${who()}<div class="h-kick">INTRODUÇÃO</div><h1 class="h-title" style="font-size:80px">Como usar o Planner Voz em Ação?</h1>
     <div class="txt fit" style="left:100px;width:900px;top:230px;bottom:150px;font-size:31px;line-height:1.42;overflow:hidden"><ul style="padding-left:40px">
@@ -2109,14 +2141,19 @@ function tblockHTML(b,sub){
   return `<section class="screen">${panel("TESTE DE<b>COMUNICAÇÃO</b>","BLOCO "+(b+1)+" / "+NB,"Como você costuma agir?","Escolha a opção que melhor representa sua percepção atual.","Sem respostas certas ou erradas.",`<div class="art" style="width:280px;opacity:.9">${img("girafa_andando","width:100%")}</div>`,"pb")}
     ${who()}<div class="work" style="gap:18px;top:100px;bottom:140px">${rows}</div>${nav()}</section>`;
 }
+/* Listas do resultado: mesmas do relatório em PDF (3 mais fortes em azul, 3 a desenvolver em cinza, na ordem do planner; "Tema - Habilidade") */
+function resListas(){
+  const R=devResultado();
+  const li=(arr,cor)=>arr.map(it=>`<div class="res-item" style="border-left:8px solid ${cor}"><div><b style="color:#111;font-family:inherit;font-size:1em;font-weight:700">${it.nome}</b> - ${it.hab}</div></div>`).join("");
+  return `<h3 style="color:${C_TEAL}">SEUS PONTOS FORTES</h3>${li(R.fortesL,C_TEAL)}
+    <h3 class="rh2" style="color:${C_GREYB}">ONDE INVESTIR E DESENVOLVER</h3>${li(R.oportL,C_GREYB)}`;
+}
 function tresHTML(){
-  const lv=levels(), order=lv.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]||a[1]-b[1]);
-  const li=arr=>arr.map(([v,i])=>`<div class="res-item">${CATS[i]}<b>${v}/10</b></div>`).join("");
+  const lv=devResultado().lv;
   return `<section class="screen">${who()}<div class="h-kick">RESULTADO DO TESTE</div><h1 class="h-title" style="font-size:80px">Sua roda da comunicação</h1>
     <div class="abs" style="left:70px;top:210px">${wheel(lv,[],860)}</div>
-    <div class="res-list" style="top:240px"><h3>SEUS PONTOS FORTES</h3>${li(order.slice(0,3))}
-    <h3 style="margin-top:26px">OPORTUNIDADES DE DESENVOLVIMENTO</h3>${li(order.slice(-3).reverse())}
-    <p style="font-size:26px;margin:22px 0 0">Cada bloco de 4 afirmações vale de 2 a 10. O resultado fica salvo no seu planner: ao concluir cada tema, você poderá refazer a autoavaliação e ver quanto avançou.</p></div>${nav(true)}</section>`;
+    <div class="res-list" style="top:185px;left:960px;right:50px">${resListas()}
+    <p style="font-size:21px;margin:4px 0 0">Seu resultado não classifica sua comunicação como boa ou ruim. Ele fica salvo: ao concluir cada tema, você poderá refazer a autoavaliação.</p></div>${nav(true)}</section>`;
 }
 
 function reflHTML(){
@@ -2128,9 +2165,9 @@ function reflHTML(){
     <div class="body" style="flex:none">${cap("3 CONQUISTAS PARA CELEBRAR")}${conq}</div>
     <div class="body" style="flex:1">${cap("MEUS APRENDIZADOS NO TEMA")}<textarea class="pad" data-key="refl_aprend" aria-label="Meus aprendizados no tema" placeholder="Escreva aqui…">${val("refl_aprend")}</textarea></div></div>
     <div class="abs" style="left:990px;top:110px;width:700px"><div style="font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:.06em;color:var(--purple);text-align:center">AUTOAVALIAÇÃO DA COMUNICAÇÃO</div>
-    <div style="font-size:23px;line-height:1.35;text-align:justify;margin:10px 0">${run("Avalie seu nível de <b>autoconhecimento</b> com a pontuação que melhor representa sua habilidade atual neste tema, depois de ter praticado nos últimos dias.","Seja sincero! Lembre-se de que você está em uma jornada de desenvolvimento e que sua autopercepção poderá mudar ao longo desse processo.","Observe que a “Roda” traz o seu resultado no teste que fez inicialmente; após sua autoavaliação, você poderá ver o quanto evoluiu.")}</div>
+    <div style="font-size:20px;line-height:1.3;text-align:justify;margin:6px 0">${run("Avalie seu nível de <b>autoconhecimento</b> escolhendo abaixo a nota que melhor representa sua habilidade atual nesse tema.","Seja sincero! Lembre-se de que você está em uma jornada de desenvolvimento e que sua autopercepção poderá mudar ao longo dos próximos temas, já que todos estão conectados e se complementam. Isso significa que, à medida que concluir cada tema, provavelmente vai aprimorar habilidades já trabalhadas.","Para isso, você terá a oportunidade de refazer sua autoavaliação e reconhecer o quanto avançou.")}</div>
     <div class="range" role="radiogroup" aria-label="Nota de 1 a 10">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<label class="sc"><input type="radio" name="refl_nota" data-key="refl_nota" data-num="1" value="${n}" ${+A("refl_nota")===n?"checked":""}><span>${n}</span></label>`).join("")}</div>
-    <div style="margin:12px auto 0;width:640px">${wheel(me,ghost,640)}</div>
+    <div style="margin:6px auto 0;width:580px">${wheel(me,ghost,580)}</div>
     <div style="font-size:23px;text-align:center;margin-top:4px">Roxo escuro: sua nota de hoje. Lilás: o resultado do seu teste nos demais temas.</div></div>${nav()}</section>`;
 }
 
@@ -2199,14 +2236,14 @@ function ptHTML(p){
         <div class="pcard"><div class="ph" style="background:${q[0]}"><h3>${q[1]}</h3><div class="lead">${q[2]}</div></div>
         <div class="pvb fit" style="margin:0;padding:24px 30px">${run(q[3],"<b>Na prática é:</b>")}<ul>${q[4].map(b=>`<li>${b}</li>`).join("")}</ul></div></div>${nav(true)}</section>`; }
     if(p.i===4){
-      if(s===0) return pvPage("INTRODUÇÃO · CICLO DA TRANSFORMAÇÃO","Como o Ciclo se fecha?",`<h3 style="margin:0 0 6px;color:var(--purple)">Nova Consciência <span style="font-weight:500;font-style:italic">— Evoluo quando aprendo.</span></h3>${run("O Ciclo se fecha de forma contínua, pois a jornada do desenvolvimento é um aprendizado diário, ou seja:")}<ul><li>A cada nova etapa de mudança, voltamos à Consciência inicial e percebemos o impacto de aspectos trabalhados.</li><li>Os resultados reforçam nossa Motivação, nos mantendo engajados no processo de evolução comunicacional contínuo.</li><li>Essa nova percepção nos leva novamente à Ação, experimentando ajustes.</li></ul>${run("Assim, esse ciclo ganha esse novo pilar, a Nova Consciência, que permite que a comunicação se torne um instrumento cíclico e poderoso de conexão e crescimento pessoal.")}`);
+      if(s===0) return pvPage("INTRODUÇÃO · CICLO DA TRANSFORMAÇÃO","Como o Ciclo se fecha?",`<h3 style="margin:0 0 6px;color:var(--purple)">Nova Consciência <span style="font-weight:500;font-style:italic">— Evoluo quando aprendo.</span></h3>${run("O Ciclo se fecha de forma contínua, pois a jornada do desenvolvimento é um aprendizado diário, ou seja:")}<ul><li>A cada nova etapa de mudança, voltamos à Consciência inicial e percebemos o impacto de aspectos trabalhados.</li><li>Os resultados reforçam nossa Motivação, nos mantendo engajados no processo de evolução comunicacional contínuo.</li><li>Essa nova percepção nos leva novamente à Ação, experimentando ajustes.</li></ul>${run("Assim, o Ciclo da Transformação ganha esse novo pilar, a Nova Consciência, que permite que a comunicação se torne um instrumento cíclico e poderoso de conexão e crescimento pessoal.")}`);
       return `<section class="screen pv" style="justify-content:center;align-items:center;padding:30px 40px">
         <div class="pvtop" style="position:absolute;top:20px;left:20px;right:20px"><span></span>${jumpMenu()}</div>
         <div style="width:100%">${img("ciclo4","width:100%")}</div>
         <div style="text-align:center;font-style:italic;font-weight:600;font-size:38px;color:var(--purple);margin-top:24px">Aproveite esta oportunidade única!</div>${nav(true)}</section>`;
     }
     if(p.i===5){ const it=(n,t,d)=>`<div class="oc"><div class="n">${n}</div><div><b>${t}</b> ${d}</div></div>`;
-      return pvPage("ORIENTAÇÕES","Como sua jornada está estruturada",`<p>Este material foi criado para te acompanhar no desenvolvimento de uma comunicação mais consciente, empática, autêntica e transformadora. Sua jornada foi dividida em 12 temas. Cada tema contém:</p><div class="ocs">${it(1,"Introdução Conceitual","sobre o que é cada tema e sua importância na Comunicação.")}${it(2,"Atividades Diárias,","4 semanas por tema, com práticas e reflexões simples, porém poderosas.")}${it(3,"Autoavaliação","ao final de cada tema, para refletir sobre suas conquistas.")}${it(4,"Material de Apoio","acessado por link (pdf), usado em algumas tarefas.")}${it(5,"Curadoria de Conteúdo","no site www.vozemacao.com: livros, filmes, documentários e videoaulas.")}</div>`); }
+      return pvPage("ORIENTAÇÕES","Como sua jornada está estruturada",`<p>Este material foi criado para te acompanhar no desenvolvimento de uma comunicação mais consciente, empática, autêntica e transformadora. Sua jornada foi dividida em 12 temas. Cada tema contém:</p><div class="ocs">${it(1,"Introdução Conceitual","sobre o que é cada tema e sua importância na Comunicação.")}${it(2,"Atividades Diárias,","4 semanas por tema, com práticas e reflexões simples, porém poderosas.")}${it(3,"Autoavaliação","ao final de cada tema, para refletir sobre suas conquistas.")}${it(4,"Material de Apoio","acessado por link (pdf), usado em algumas tarefas.")}${it(5,"Ciclo da Transformação","ao final de cada tema, um PLANO DE AÇÃO com o Método do Ciclo da Transformação.")}${it(6,"Curadoria de Conteúdo","no site www.vozemacao.com: livros, filmes, documentários e videoaulas.")}</div>`); }
     return pvPage("INTRODUÇÃO","Como usar o Planner Voz em Ação?",`<ul><li>Estabeleça seu ritmo e pratique um tema por vez.</li><li>Faça as atividades propostas diariamente, ou agrupe conforme sua disponibilidade semanal. O importante é manter a constância das práticas.</li><li>Use os espaços para escrever, rabiscar, pensar alto. Este material é somente seu!</li><li>Revise suas autoavaliações ao longo do tempo e você vai se surpreender com sua evolução!</li></ul><div class="dica"><h3>Dica final: sua voz importa!</h3>${run("Não se trata apenas de falar bem. Trata-se de se conectar com autenticidade, escutar com presença, expressar com verdade e transformar com coragem.","<b>Vamos juntos? Coloque sua Voz em Ação!</b>")}</div>`);
   }
   if(p.k==="tinstr"){
@@ -2215,10 +2252,9 @@ function ptHTML(p){
     return pvPage("TESTE DE COMUNICAÇÃO","Como responder",`<div class="legend2">${SCALE.map((x,i)=>`<div><b style="color:var(--purple)">${i+1}. ${x}</b> — ${defs[i]}</div>`).join("")}</div><div class="dica"><b>IMPORTANTE:</b> responda com espontaneidade e sinceridade. Não existem respostas boas ou ruins, certas ou erradas — o objetivo é identificar seus pontos fortes e oportunidades de desenvolvimento.</div>`);
   }
   if(p.k==="tres"){
-    const lv=levels(), order=lv.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]||a[1]-b[1]);
-    const li=arr=>arr.map(([v,i])=>`<div class="res-item">${CATS[i]}<b>${v}/10</b></div>`).join("");
+    const lv=devResultado().lv;
     if(s===0) return pvPage("RESULTADO DO TESTE","Sua roda da comunicação",`<div style="width:100%;display:grid;place-items:center">${wheel(lv,[],700)}</div>`);
-    return pvPage("RESULTADO DO TESTE","Seus destaques",`<h3 class="rh">SEUS PONTOS FORTES</h3>${li(order.slice(0,3))}<h3 class="rh" style="margin-top:22px">OPORTUNIDADES DE DESENVOLVIMENTO</h3>${li(order.slice(-3).reverse())}<p style="margin-top:18px;font-size:.9em">Cada bloco de 4 afirmações vale de 2 a 10. O resultado fica salvo: ao concluir cada tema, você poderá refazer a autoavaliação e ver quanto avançou.</p>`);
+    return pvPage("RESULTADO DO TESTE","Seus destaques",`${resListas()}<p style="margin-top:18px;font-size:.9em">Seu resultado não classifica sua comunicação como boa ou ruim. Ele fica salvo: ao concluir cada tema, você poderá refazer a autoavaliação e ver quanto avançou.</p>`);
   }
   if(p.k==="capintro") return pvPage("CAPÍTULO 1","AUTOCONHECIMENTO", s===0?paras(CAP_TEXT,0,3):paras(CAP_TEXT,3,6));
   if(p.k==="refl"){
