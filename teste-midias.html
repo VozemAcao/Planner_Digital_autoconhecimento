@@ -4281,12 +4281,12 @@ const img = (n,style="") => `<img src="${IMG[n]}" alt="" style="display:block;${
 
 /* Materiais de apoio (antes no envelope físico, agora em link): clique para ver a folha inteira. */
 const MATERIAIS = {
-  link16: {titulo:"Intenção de Discurso", src:"imagens/link-16-intencao-de-discurso.png", pdf:"materiais/link-16-intencao-de-discurso.pdf"},
-  sentimentos: {titulo:"Lista de Sentimentos e Necessidades Humanas", img:"sentimentos", pdf:"materiais/link-02-sentimentos-e-necessidades.pdf"},
-  matriz: {titulo:"Matriz da Comunicação", img:"matriz", pdf:"materiais/link-01-matriz-da-comunicacao.pdf"},
-  ciclo: {titulo:"Meu Ciclo da Transformação no Autoconhecimento", img:"link03", pdf:"materiais/link-03-ciclo-da-transformacao.pdf"},
-  atencao: {titulo:"Atenção Plena nas Atividades Cotidianas (encarte)", img:"link04", pdf:"materiais/link-04-atencao-plena.pdf"},
-  ciclo05: {titulo:"Meu Ciclo da Transformação na Presença", img:"link05", pdf:"materiais/link-05-ciclo-presenca.pdf"}
+  link16: {titulo:"Intenção de Discurso", src:"link-16-intencao-de-discurso.png", pdf:"link-16-intencao-de-discurso.pdf"},
+  sentimentos: {titulo:"Lista de Sentimentos e Necessidades Humanas", img:"sentimentos", pdf:"link-02-sentimentos-e-necessidades.pdf"},
+  matriz: {titulo:"Matriz da Comunicação", img:"matriz", pdf:"link-01-matriz-da-comunicacao.pdf"},
+  ciclo: {titulo:"Meu Ciclo da Transformação no Autoconhecimento", img:"link03", pdf:"link-03-ciclo-da-transformacao.pdf"},
+  atencao: {titulo:"Atenção Plena nas Atividades Cotidianas (encarte)", img:"link04", pdf:"link-04-atencao-plena.pdf"},
+  ciclo05: {titulo:"Meu Ciclo da Transformação na Presença", img:"link05", pdf:"link-05-ciclo-presenca.pdf"}
 };
 const linkMaterial = (chave,rotulo) => `<button type="button" class="mat-link" data-material="${chave}">${rotulo}</button>`;
 function openMaterial(chave){
@@ -4426,18 +4426,18 @@ const DAYS = ["S","T","Q","Q","S","S","D"];
 const CI = (tab,key,q,ph) => ({tab,key,type:"text",q,ph});
 /* Ciclo da Transformação: as 4 últimas páginas do PDF (12 a 15) entram como imagem, sem alteração; só os campos de escrita são do site.
    Coordenadas na página de 1100 x 1804 px: x0/x1 = extensão da linha, y1 = 1ª linha, L = distância entre linhas, n = nº de linhas. */
-const CICLO_AUTO_PG = {  1:{img:"imagens/ciclo-autoconhecimento-1.jpg", tit:"01. Consciência", f:[
+const CICLO_AUTO_PG = {  1:{img:"ciclo-autoconhecimento-1.jpg", tit:"01. Consciência", f:[
     {k:"c1_desafio", x0:130,x1:1005,y1:1049.5,L:46,n:2, lb:"Qual exercício ou reflexão foi mais desafiador para você?"},
     {k:"c1_causa",   x0:134,x1:1009,y1:1303.5,L:47,n:2, lb:"O que tornou essa prática desafiadora?"},
     {k:"c1_insight", x0:121,x1:971, y1:1670.5,L:59,n:2, lb:"O que eu percebi?"}]},
-  2:{img:"imagens/ciclo-autoconhecimento-2.jpg", tit:"02. Motivação", f:[
+  2:{img:"ciclo-autoconhecimento-2.jpg", tit:"02. Motivação", f:[
     {k:"c2_porque",  x0:89, x1:964, y1:1101.5,L:47,n:5, lb:"Por que seria importante desenvolver o que percebeu?"},
     {k:"c2_meu",     x0:98, x1:945, y1:1641.5,L:62,n:2, lb:"Resuma sua Motivação"}]},
-  3:{img:"imagens/ciclo-autoconhecimento-3.jpg", tit:"03. Ação", f:[
+  3:{img:"ciclo-autoconhecimento-3.jpg", tit:"03. Ação", f:[
     {k:"c3_oque",    x0:108,x1:1005,y1:999.5, L:46,n:2, lb:"Que comportamento quer incorporar ou fazer diferente?"},
     {k:"c3_como",    x0:113,x1:1010,y1:1295.5,L:47,n:2, lb:"Como vou praticar?"},
     {k:"c3_acoes",   x0:113,x1:988, y1:1616.5,L:50.5,n:3, lb:"Que ações concretas vou realizar?"}]},
-  4:{img:"imagens/ciclo-autoconhecimento-4.jpg", tit:"04. Nova Consciência", link:{x0:426,x1:541,y0:1512,y1:1539}, f:[
+  4:{img:"ciclo-autoconhecimento-4.jpg", tit:"04. Nova Consciência", link:{x0:426,x1:541,y0:1512,y1:1539}, f:[
     {k:"c5_aprendi", x0:91, x1:966, y1:1305.5,L:47,n:2, lb:"O que agora consigo enxergar que antes não enxergava?"}]}
 };
 
@@ -4481,18 +4481,18 @@ const WEEKS_PRES = [
 ];
 /* Ciclo da Transformação — Presença: páginas 12 a 15 do PDF como imagem; coordenadas na página de 1100 x 1804 px */
 const CICLO_PRES_PG = {
-  1:{img:"imagens/ciclo-presenca-1.jpg", tit:"01. Consciência", f:[
+  1:{img:"ciclo-presenca-1.jpg", tit:"01. Consciência", f:[
     {k:"c1_desafio", x0:138,x1:1012,y1:934.5, L:46,  n:2, lb:"Qual exercício ou reflexão foi mais desafiador para você?"},
     {k:"c1_causa",   x0:142,x1:1017,y1:1188.5,L:47,  n:2, lb:"O que tornou essa prática desafiadora?"},
     {k:"c1_insight", x0:145,x1:995, y1:1613.5,L:65,  n:2, lb:"O que eu percebi?"}]},
-  2:{img:"imagens/ciclo-presenca-2.jpg", tit:"02. Motivação", f:[
+  2:{img:"ciclo-presenca-2.jpg", tit:"02. Motivação", f:[
     {k:"c2_porque",  x0:146,x1:1021,y1:1037.5,L:47,  n:5, lb:"Por que seria importante desenvolver o que percebeu?"},
     {k:"c2_meu",     x0:155,x1:1002,y1:1577.5,L:62,  n:2, lb:"Resuma sua Motivação"}]},
-  3:{img:"imagens/ciclo-presenca-3.jpg", tit:"03. Ação", f:[
+  3:{img:"ciclo-presenca-3.jpg", tit:"03. Ação", f:[
     {k:"c3_oque",    x0:145,x1:1042,y1:1054.5,L:47,  n:2, lb:"Que comportamento quer incorporar ou fazer diferente?"},
     {k:"c3_como",    x0:149,x1:1046,y1:1351.5,L:47,  n:2, lb:"Como vou praticar?"},
     {k:"c3_acoes",   x0:152,x1:1028,y1:1634.5,L:50,  n:3, lb:"Que ações concretas vou realizar?"}]},
-  4:{img:"imagens/ciclo-presenca-4.jpg", tit:"04. Nova Consciência", link:{x0:424,x1:540,y0:1444,y1:1471}, f:[
+  4:{img:"ciclo-presenca-4.jpg", tit:"04. Nova Consciência", link:{x0:424,x1:540,y0:1444,y1:1471}, f:[
     {k:"c5_aprendi", x0:95, x1:970, y1:1262.5,L:47,  n:2, lb:"O que agora consigo enxergar que antes não enxergava?"}]}
 };
 
@@ -4517,14 +4517,14 @@ const CICLO_TIT = ["01. Consciência","02. Motivação","03. Ação","04. Nova C
 Object.entries(NOVOS).forEach(([slug,n])=>{
   const ciclo={};
   [1,2,3,4].forEach(i=>{ const pg=n.paginas[String(11+i)];
-    ciclo[i]={img:`imagens/ciclo-${slug}-${i}.jpg`, tit:CICLO_TIT[i-1],
+    ciclo[i]={img:`ciclo-${slug}-${i}.jpg`, tit:CICLO_TIT[i-1],
       f:pg.f.map((c,j)=>({k:CICLO_KEYS[i-1][j]||("x"+j), x0:c[0]*PX, x1:c[1]*PX, y1:c[2]*PX, L:c[3]*PX, n:c[4], lb:(CICLO_LB[i-1][j]||"Resposta")}))};
     if(pg.link) ciclo[i].link={x0:pg.link[0]*PX,y0:pg.link[1]*PX,x1:pg.link[2]*PX,y1:pg.link[3]*PX};
   });
   const nn=String(n.link).padStart(2,"0");
-  MATERIAIS["ciclo"+nn]={titulo:`Meu Ciclo da Transformação ${n.art.toLowerCase()} ${n.nome}`, src:`imagens/link-${nn}-${slug}.png`, pdf:`materiais/link-${nn}-${slug}.pdf`};
+  MATERIAIS["ciclo"+nn]={titulo:`Meu Ciclo da Transformação ${n.art.toLowerCase()} ${n.nome}`, src:`link-${nn}-${slug}.png`, pdf:`link-${nn}-${slug}.pdf`};
   MODS[slug]={slug, legacy:false, kind:"img", nome:n.nome, NOME:n.NOME, art:n.art, de:n.de, cap:n.cap, cat:n.cat, capText:n.p1, weeks:[{n:1},{n:2},{n:3},{n:4}], pg:n.paginas, listas:n.listas, lks:n.lks,
-    ciclo, form:"ciclo"+nn, formN:nn, avalia:n.nome.toLowerCase(), div:{quote:n.quote, autor:n.autor, img:`imagens/tema-${slug}.png`}};
+    ciclo, form:"ciclo"+nn, formN:nn, avalia:n.nome.toLowerCase(), div:{quote:n.quote, autor:n.autor, img:`tema-${slug}.png`}};
 });
 /* ordem dos capítulos = ordem oficial dos 12 temas (planilha "Referências Planner Digital") */
 const ORDEM_TEMAS = ["autoconhecimento","presenca","empatia","escuta","linguagem-corporal","comunicacao-nao-violenta","assertividade","autenticidade","conversas-dificeis","storytelling","feedback","confianca"];
@@ -4534,7 +4534,7 @@ const TEM_CAP = !MODO && MODS_SEL.length>0;
 const CAPS = [CAP_INTRO, ...MODS_SEL.map(m=>m.cap)];
 const PK = th => th.legacy ? "" : th.slug+"_";
 const dkey = (th,n) => th.legacy ? n : th.slug+"."+n;
-const divImg = (k,st) => /\//.test(k) ? `<img src="${k}" alt="" style="display:block;${st}">` : img(k,st);
+const divImg = (k,st) => /\.(png|jpe?g)$/i.test(k) ? `<img src="${k}" alt="" style="display:block;${st}">` : img(k,st);
 const curTh = () => MODS[PAGES[page].th] || MODS_SEL[0];
 const isDone = (th,n) => !!state.done[dkey(th,n)];
 const keyTheme = k => { for(const m of Object.values(MODS)) if(!m.legacy && k.startsWith(m.slug+"_")) return m.slug; return "autoconhecimento"; };
@@ -4878,7 +4878,7 @@ function weekImgHTML(p){
   const lks=(th.lks||[]).filter(l=>l[0]===pgn&&MAPL[l[5]]).map(l=>`<button type="button" class="cp-link" data-material="${MAPL[l[5]]}" aria-label="Abrir o material (Link ${l[5]})" style="left:${pc(l[1])}%;top:${pcy(l[2])}%;width:${pc(l[3]-l[1])}%;height:${pcy(l[4]-l[2])}%"></button>`).join("");
   const done=isDone(th,w), last=w===4;
   const btn=part===1?`<button class="done-btn wk-done ${done?"ok":""}" data-act="done" data-w="${w}">${done?(last?"✓ Semana 4 concluída<br>Ir às reflexões ›":"✓ Semana "+w+" concluída<br>Ir à Semana "+(w+1)+" ›"):"Concluir<br>semana "+w}</button>`:"";
-  return `<section class="screen ${PT?"pv":""}">${who()}<div class="cpage" role="group" aria-label="${th.nome} — semana ${w}, página ${part+1}"><img src="imagens/${th.slug}-s${w}p${part}.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%">${fields}${inl}${cx}${hab}${mood}${lst}${lks}</div>${btn}${nav()}</section>`;
+  return `<section class="screen ${PT?"pv":""}">${who()}<div class="cpage" role="group" aria-label="${th.nome} — semana ${w}, página ${part+1}"><img src="${th.slug}-s${w}p${part}.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%">${fields}${inl}${cx}${hab}${mood}${lst}${lks}</div>${btn}${nav()}</section>`;
 }
 /* semana concluída = pelo menos 5 respostas (ou todas, se a semana tem menos) entre campos escritos e escalas; hábitos e mood não contam */
 function weekMissingImg(th,n){
